@@ -1,0 +1,8 @@
+<% content_for :main_grid do %>
+  <h1>強制的にユーザーをログアウトさせます</h1>
+<p>強制的にログアウトさせるためいろいろあるかもしれないけどどうにかしてください</p>
+<%= form_for @user do |f| %>
+<%= f.label :ログインしているユーザー名 %>
+<%= f.collection_select :userid, Login.all, :id, :userid %>
+<% end %>
+<% end %>

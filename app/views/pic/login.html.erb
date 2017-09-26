@@ -1,0 +1,27 @@
+<% provide(:title, "サインイン") %>
+<% if logged_in? %>
+<%= current_user.userid %><br>
+<% else %>
+<div class="form-wrapper">
+  <h1>サインイン</h1>
+  <%= form_tag(action: 'login_user') do %>
+  <form>
+    <div class="form-item">
+      <%= label_tag  :ユーザーID %>
+      <%= text_field_tag :userid %>
+    </div>
+    <div class="form-item">
+      <%= label_tag :パスワード %>
+      <%= password_field_tag :password %>
+    </div>
+    <div class="button-panel">
+      <%= submit_tag "サインイン", class: "button" %>
+    </div>
+  </form>
+  <% end %>
+  <% end %>
+  <div class="form-footer">
+    <p><%= link_to("新規登録", action: 'register') %></p>
+    <p><% link_to("パスワードを忘れた方", action: 'forgot') %></p>
+  </div>
+</div>

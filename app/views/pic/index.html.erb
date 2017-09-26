@@ -1,0 +1,21 @@
+<% provide(:title, "メインページ") %>
+<%= render 'pic/header' %>
+<div id="container">
+  <%= render 'pic/sidbar' %>
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+  <br>
+  <div id="content">
+    <h1>新着順 最新10件</h1>
+    <% @img.reverse_each do |img| %>
+    <ul class="thumbnail clearfix">
+      <li>
+	<%= link_to (image_tag "/img/#{img.title}.png", size: "150x150"), action: 'download', id: img.id %>
+	<%= link_to img.title.split("_")[0], action: 'download', id: img.id %>
+      </li>
+    </ul>
+    <% end %>
+    </div>
+</div>
+<%= render 'pic/footer' %>
